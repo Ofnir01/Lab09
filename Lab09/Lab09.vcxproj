@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="catch.hpp" />
+    <ClInclude Include="exceptions.h" />
     <ClInclude Include="StringDLinkedList.h" />
   </ItemGroup>
   <ItemGroup>

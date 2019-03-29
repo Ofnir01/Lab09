@@ -1,9 +1,10 @@
 #include "catch.hpp"
+#include "exceptions.h"
 #include "StringDLinkedList.h"
 
 TEST_CASE("Testing StringDLinkedList class") {
 	
-	SECTION("Testing push_front function") {
+	SECTION("Testing push_front function and front functions.") {
 		StringDLinkedList test;
 		test.push_front("You?");
 		REQUIRE(test.front() == "You?");
@@ -22,7 +23,7 @@ TEST_CASE("Testing StringDLinkedList class") {
 		REQUIRE(test.back() == "You?");
 	}
 
-	SECTION("Testing push_back function") {
+	SECTION("Testing push_back and back functions.") {
 		StringDLinkedList test;
 		
 		test.push_back("Hello");
@@ -40,5 +41,31 @@ TEST_CASE("Testing StringDLinkedList class") {
 		test.push_back("You?");
 		REQUIRE(test.back() == "You?");
 		REQUIRE(test.front() == "Hello");
+	}
+
+	SECTION("Testing pop_front") {
+		StringDLinkedList test;
+		test.push_back("Hello");
+		test.push_back("There");
+		test.push_back("How");
+		test.push_back("Are");
+		test.push_back("You?");
+
+		test.pop_front();
+		REQUIRE(test.front() == "There");
+
+		test.pop_front();
+		REQUIRE(test.front() == "How");
+
+		test.pop_front();
+		REQUIRE(test.front() == "Are");
+
+		test.pop_front();
+		REQUIRE(test.front() == "You?");
+
+		test.pop_front();
+		REQUIRE(test.front() == nullptr);
+
+		REQUIRE_THROWS_AS(test.pop_front(), EmptyList);
 	}
 }
