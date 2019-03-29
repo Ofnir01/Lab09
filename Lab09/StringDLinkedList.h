@@ -33,12 +33,12 @@ public:
 	//*******************************************************************************************************
 	//push_front function. This function will add a new value to the beginning of the list.					*
 	//*******************************************************************************************************
-	void push_front(int);
+	void push_front(const string&);
 
 	//*******************************************************************************************************
 	//push_back function. This function will add a new value to the end of the list.						*
 	//*******************************************************************************************************
-	void push_back(int);
+	void push_back(const string&);
 
 	//*******************************************************************************************************
 	//pop_front function. This function will remove the first value of the list.							*
@@ -53,7 +53,7 @@ public:
 	//*******************************************************************************************************
 	//remove_inst function. This function will remove all instances of a specific value.					*
 	//*******************************************************************************************************
-	void remove_inst(int);
+	void remove_inst(const string&);
 
 	//*******************************************************************************************************
 	//front_print. This function accepts an ostream reference which will be responsible of printing the		*

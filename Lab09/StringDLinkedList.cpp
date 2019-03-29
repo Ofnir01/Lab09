@@ -4,8 +4,8 @@ using std::string;
 
 StringDLinkedList::StringDLinkedList() {
 	head = nullptr;
+	tail = nullptr;
 }
-
 //*******************************************************************************************************
 //front function. This function will return a constant reference to the first value in the list.		*
 //*******************************************************************************************************
@@ -23,14 +23,30 @@ const string& StringDLinkedList::back() const {
 //*******************************************************************************************************
 //push_front function. This function will add a new value to the beginning of the list.					*
 //*******************************************************************************************************
-void StringDLinkedList::push_front(int) {
+void StringDLinkedList::push_front(const string& data_in) {
+	if (head == nullptr) {
+		head->data = data_in;
+	}
 
+	else {
+		Node* tempPtr;
+		tempPtr = new Node;
+
+		tempPtr->data = data_in;
+		
+		tempPtr->prev = nullptr;
+		tempPtr->next = head;
+		
+		head = tempPtr;
+
+		delete tempPtr;
+	}
 }
 
 //*******************************************************************************************************
 //push_back function. This function will add a new value to the end of the list.						*
 //*******************************************************************************************************
-void StringDLinkedList::push_back(int) {
+void StringDLinkedList::push_back(const string& data_in) {
 
 }
 
@@ -51,7 +67,7 @@ void StringDLinkedList::pop_back() {
 //*******************************************************************************************************
 //remove_inst function. This function will remove all instances of a specific value.					*
 //*******************************************************************************************************
-void StringDLinkedList::remove_inst(int) {
+void StringDLinkedList::remove_inst(const string& data_in) {
 
 }
 
@@ -59,19 +75,19 @@ void StringDLinkedList::remove_inst(int) {
 //front_print. This function accepts an ostream reference which will be responsible of printing the		*
 //list in a foward order.																				*
 //*******************************************************************************************************
-ostream& StringDLinkedList::front_print(ostream&) const {
-
+ostream& StringDLinkedList::front_print(ostream& out) const {
+	return out;
 }
 
 //*******************************************************************************************************
 //back_print. This function accepts an ostream reference which will be responsible of printing the		*
 //list in a backwards order.																			*
 //*******************************************************************************************************
-ostream& StringDLinkedList::back_print(ostream&) const {
-
+ostream& StringDLinkedList::back_print(ostream& out) const {
+	return out;
 }
 
 //Default deconstructor.
-StringDLinkedList::~StringDLinkedList(){
-
+StringDLinkedList::~StringDLinkedList() {
+	
 }
