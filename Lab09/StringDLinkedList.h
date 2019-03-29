@@ -4,8 +4,8 @@
 #include <string>
 using std::string;
 using std::ostream;
-class StringDLinkedList
-{
+
+class StringDLinkedList {
 private:
 	struct Node {
 		string data;

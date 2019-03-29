@@ -27,19 +27,17 @@ void StringDLinkedList::push_front(const string& data_in) {
 	if (head == nullptr) {
 		head->data = data_in;
 	}
-
 	else {
 		Node* tempPtr;
 		tempPtr = new Node;
 
 		tempPtr->data = data_in;
-		
 		tempPtr->prev = nullptr;
 		tempPtr->next = head;
 		
 		head = tempPtr;
 
-		delete tempPtr;
+		//delete tempPtr;
 	}
 }
 
@@ -47,28 +45,59 @@ void StringDLinkedList::push_front(const string& data_in) {
 //push_back function. This function will add a new value to the end of the list.						*
 //*******************************************************************************************************
 void StringDLinkedList::push_back(const string& data_in) {
+	if (tail == nullptr) {
+		tail->data = data_in;
+	}
+	else {
+		Node* tempPtr;
+		tempPtr = new Node;
+		
+		tempPtr->data = data_in;
+		tempPtr->next = nullptr;
+		tempPtr->prev = tail;
 
+		tail = tempPtr;
+
+		//delete tempPtr;
+	}
 }
 
 //*******************************************************************************************************
 //pop_front function. This function will remove the first value of the list.							*
 //*******************************************************************************************************
 void StringDLinkedList::pop_front() {
-
+	head = head->next;
 }
 
 //*******************************************************************************************************
 //pup_back function. This function will remove the last value of the list.								*
 //*******************************************************************************************************
 void StringDLinkedList::pop_back() {
-
+	tail = tail->prev;
 }
 
 //*******************************************************************************************************
 //remove_inst function. This function will remove all instances of a specific value.					*
 //*******************************************************************************************************
 void StringDLinkedList::remove_inst(const string& data_in) {
+	bool repeat;
+	Node* tempPtr = head;
 
+	while (repeat) {
+		if (tempPtr->data == data_in) {
+			//Do something to delete the node.
+
+
+			//Update node to next value.
+			tempPtr = tempPtr->next;
+				
+			if (tempPtr != nullptr)
+				repeat = true;
+
+			else
+				repeat = false;
+		}
+	}
 }
 
 //*******************************************************************************************************
@@ -76,6 +105,10 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 //list in a foward order.																				*
 //*******************************************************************************************************
 ostream& StringDLinkedList::front_print(ostream& out) const {
+	out << "{ ";
+
+	out << "}";
+	
 	return out;
 }
 
