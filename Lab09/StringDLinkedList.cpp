@@ -24,38 +24,32 @@ const string& StringDLinkedList::back() const {
 //push_front function. This function will add a new value to the beginning of the list.					*
 //*******************************************************************************************************
 void StringDLinkedList::push_front(const string& data_in) {
-	if (head->next == nullptr) {
-		head->data = data_in;
-	}
-	else {
-		Node* tempPtr;
-		tempPtr = new Node;
+	if (head == nullptr && tail == nullptr) {
 
-		tempPtr->data = data_in;
-		tempPtr->prev = nullptr;
-		tempPtr->next = head;
-		
-		head = tempPtr;
 	}
+	
+	Node* tempPtr;
+	tempPtr = new Node;
+
+	tempPtr->data = data_in;
+	//tempPtr->prev = tail;
+	tempPtr->next = head;
+	
+	head = tempPtr;
 }
 
 //*******************************************************************************************************
 //push_back function. This function will add a new value to the end of the list.						*
 //*******************************************************************************************************
 void StringDLinkedList::push_back(const string& data_in) {
-	if (tail == nullptr) {
-		tail->data = data_in;
-	}
-	else {
-		Node* tempPtr;
-		tempPtr = new Node;
+	Node* tempPtr;
+	tempPtr = new Node;
 		
-		tempPtr->data = data_in;
-		tempPtr->next = nullptr;
-		tempPtr->prev = tail;
+	tempPtr->data = data_in;
+	//tempPtr->next = nullptr;
+	tempPtr->prev = tail;
 
-		tail = tempPtr;
-	}
+	tail = tempPtr;
 }
 
 //*******************************************************************************************************
