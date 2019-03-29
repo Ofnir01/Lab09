@@ -127,9 +127,7 @@ void StringDLinkedList::pop_back() {
 //remove_inst function. This function will remove all instances of a specific value.					*
 //*******************************************************************************************************
 void StringDLinkedList::remove_inst(const string& data_in) {
-	Node* tempPrev;
-	Node* tempCurr;
-	Node* tempNext;
+	Node* curr;
 
 	//case if head is an instance to be removed.
 	while (head->data == data_in) {
@@ -143,25 +141,18 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 
 	//Update all the info because by this point we know that at this point, neither head or tail
 	//are instances to be removed.
-	tempPrev= head;
-	tempCurr = head->next;
-	tempNext = tempCurr->next;
+	curr = head;
 
 	//case that will deal with all the nodes that are within head and tail.
-	while (tempCurr->next != tail) {
-		if (tempCurr->data == data_in) {
-			tempPrev->next = tempNext;
-			tempNext->prev = tempPrev;
+	while (curr != nullptr) {
+		Node* next = curr->next;;
+		if (curr->data == data_in) {
+			curr->prev->next = curr->next;
+			curr->next->prev = curr->prev;
 
-			delete tempCurr;
-			tempCurr = tempNext;
-			tempNext = tempNext->next;
+			delete curr;
 		}
-		else {
-			tempPrev = tempCurr;
-			tempCurr = tempNext;
-			tempNext = tempNext->next;
-		}
+		curr = next;
 	}
 }
 
@@ -197,22 +188,21 @@ ostream& StringDLinkedList::front_print(ostream& out) const {
 //list in a backwards order.																			*
 //*******************************************************************************************************
 ostream& StringDLinkedList::back_print(ostream& out) const {
-	bool repeat = true;
+	//bool repeat = true;
 	Node* tempPtr = tail;
 	
 	out << "{ ";
 
-	while (repeat) {
-		if (head == tail) {
-			out << "List is empty. ";
-			repeat = false;
-		}
+	if (head == nullptr && tail == nullptr) {
+		out << "List is empty. ";
+		//repeat = false;
+	}
 
-		else if (tempPtr != nullptr) {
-			out << tempPtr->data << " ";
-			tempPtr = tempPtr->prev;
-			repeat = true;
-		}
+	while (tempPtr != nullptr)// && repeat) {
+	{
+		out << tempPtr->data << " ";
+		tempPtr = tempPtr->prev;
+		//repeat = true;
 	}
 
 	out << "}";

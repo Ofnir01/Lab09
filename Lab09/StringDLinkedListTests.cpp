@@ -2,7 +2,9 @@
 #include "exceptions.h"
 #include "StringDLinkedList.h"
 #include <sstream>
-using std::ostream;
+#include <iostream>
+using std::cout;
+using std::ostringstream;
 
 TEST_CASE("Testing StringDLinkedList class") {
 	
@@ -66,7 +68,7 @@ TEST_CASE("Testing StringDLinkedList class") {
 		REQUIRE(test.front() == "You?");
 
 		test.pop_front();
-		//REQUIRE(test.front() == nullptr);
+		REQUIRE_THROWS_AS(test.front(), EmptyList);
 
 		REQUIRE_THROWS_AS(test.pop_front(), EmptyList);
 	}
@@ -102,7 +104,7 @@ TEST_CASE("Testing StringDLinkedList class") {
 	}
 
 	SECTION("Testing front_print") {
-		//ostream out;
+		ostringstream out;
 		StringDLinkedList test;
 		test.push_back("Hello");
 		test.push_back("There");
@@ -110,10 +112,21 @@ TEST_CASE("Testing StringDLinkedList class") {
 		test.push_back("Are");
 		test.push_back("You?");
 
-
+		test.front_print(out);
+		REQUIRE(out.str() == " --- ");
 	}
 
 	SECTION("Testing back_print") {
+		ostringstream out;
+		StringDLinkedList test;
+		test.push_back("Hello");
+		test.push_back("There");
+		test.push_back("How");
+		test.push_back("Are");
+		test.push_back("You?");
 
+		test.back_print(out);
+
+		REQUIRE(" " == " ");
 	}
 }
