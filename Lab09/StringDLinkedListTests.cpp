@@ -39,6 +39,6 @@ TEST_CASE("Testing StringDLinkedList class") {
 
 		test.push_back("You?");
 		REQUIRE(test.back() == "You?");
-		//REQUIRE(test.front() == "Hello");
+		REQUIRE(test.front() == "Hello");
 	}
 }

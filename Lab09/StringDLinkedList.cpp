@@ -37,9 +37,9 @@ void StringDLinkedList::push_front(const string& data_in) {
 
 	else {
 		tempPtr->data = data_in;
+		tempPtr->prev = nullptr;
 		tempPtr->next = head;
 		head->prev = tempPtr;
-		tempPtr->prev = nullptr;
 		head = tempPtr;
 	}
 }
@@ -50,12 +50,22 @@ void StringDLinkedList::push_front(const string& data_in) {
 void StringDLinkedList::push_back(const string& data_in) {
 	Node* tempPtr;
 	tempPtr = new Node;
-		
-	tempPtr->data = data_in;
-	//tempPtr->next = nullptr;
-	tempPtr->prev = tail;
 
-	tail = tempPtr;
+	if (head == nullptr && tail == nullptr) {
+		head = tempPtr;
+		tail = tempPtr;
+		tempPtr->data = data_in;
+		tempPtr->next = nullptr;
+		tempPtr->prev = nullptr;
+	}
+
+	else {
+		tempPtr->data = data_in;
+		tempPtr->next = nullptr;
+		tempPtr->prev = tail;
+		tail->next = tempPtr;
+		tail = tempPtr;
+	}
 }
 
 //*******************************************************************************************************
