@@ -1,5 +1,7 @@
 #include "StringDLinkedList.h"
 #include <string>
+#include <iostream>
+using std::cout;
 using std::string;
 
 StringDLinkedList::StringDLinkedList() {
@@ -72,14 +74,52 @@ void StringDLinkedList::push_back(const string& data_in) {
 //pop_front function. This function will remove the first value of the list.							*
 //*******************************************************************************************************
 void StringDLinkedList::pop_front() {
-	head = head->next;
+	//case if the list is empty.
+	if (head == nullptr && tail == nullptr) {
+		cout << "The list is empty, there is no value to delete.";
+	}
+
+	//case if the list has only one node.
+	else if (head == tail) {
+		delete head;
+		head = nullptr;
+		tail = nullptr;
+	}
+	
+	//case if there's more than one node on the list.
+	else {
+		Node* tempPtr;
+		tempPtr = head;
+		head = head->next;
+		head->prev = nullptr;
+		delete tempPtr;
+	}
 }
 
 //*******************************************************************************************************
 //pup_back function. This function will remove the last value of the list.								*
 //*******************************************************************************************************
 void StringDLinkedList::pop_back() {
-	tail = tail->prev;
+	//case if the list is empty.
+	if (head == nullptr && tail == nullptr) {
+		cout << "The list is empty, there is no value to delete.";
+	}
+	
+	//case if the list has only one node.
+	else if (head == tail) {
+		delete head;
+		head = nullptr;
+		tail = nullptr;
+	}
+
+	//case if there's more than one node in the list.
+	else {
+		Node* tempPtr;
+		tempPtr = tail;
+		tail = tail->prev;
+		tail->next = nullptr;
+		delete tempPtr;
+	}
 }
 
 //*******************************************************************************************************
