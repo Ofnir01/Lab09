@@ -19,7 +19,7 @@ TEST_CASE("Testing StringDLinkedList class") {
 
 		test.push_front("Hello");
 		REQUIRE(test.front() == "Hello");
-		//REQUIRE(test.back() == "You?");
+		REQUIRE(test.back() == "You?");
 	}
 
 	SECTION("Testing push_back function") {

@@ -24,18 +24,24 @@ const string& StringDLinkedList::back() const {
 //push_front function. This function will add a new value to the beginning of the list.					*
 //*******************************************************************************************************
 void StringDLinkedList::push_front(const string& data_in) {
-	if (head == nullptr && tail == nullptr) {
-
-	}
-	
 	Node* tempPtr;
 	tempPtr = new Node;
 
-	tempPtr->data = data_in;
-	//tempPtr->prev = tail;
-	tempPtr->next = head;
-	
-	head = tempPtr;
+	if (head == nullptr && tail == nullptr) {
+		head = tempPtr;
+		tail = tempPtr;
+		tempPtr->data = data_in;
+		tempPtr->next = nullptr;
+		tempPtr->prev = nullptr;
+	}
+
+	else {
+		tempPtr->data = data_in;
+		tempPtr->next = head;
+		head->prev = tempPtr;
+		tempPtr->prev = nullptr;
+		head = tempPtr;
+	}
 }
 
 //*******************************************************************************************************
