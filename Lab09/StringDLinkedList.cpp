@@ -127,20 +127,18 @@ void StringDLinkedList::pop_back() {
 //remove_inst function. This function will remove all instances of a specific value.					*
 //*******************************************************************************************************
 void StringDLinkedList::remove_inst(const string& data_in) {
-	//bool repeat = true;
-	
 	Node* tempPrev;
 	Node* tempCurr;
 	Node* tempNext;
 
 	//case if head is an instance to be removed.
 	while (head->data == data_in) {
-		pop_front;
+		pop_front();
 	}
 
 	//case if tail is an insatnce to be removed. 
 	while (tail->data == data_in) {
-		pop_back;
+		pop_back();
 	}
 
 	//Update all the info because by this point we know that at this point, neither head or tail
@@ -156,6 +154,11 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 			tempNext->prev = tempPrev;
 
 			delete tempCurr;
+			tempCurr = tempNext;
+			tempNext = tempNext->next;
+		}
+		else {
+			tempPrev = tempCurr;
 			tempCurr = tempNext;
 			tempNext = tempNext->next;
 		}
