@@ -76,7 +76,7 @@ void StringDLinkedList::pop_back() {
 //remove_inst function. This function will remove all instances of a specific value.					*
 //*******************************************************************************************************
 void StringDLinkedList::remove_inst(const string& data_in) {
-	bool repeat;
+	bool repeat = true;
 	Node* tempPtr = head;
 
 	while (repeat) {
@@ -101,7 +101,7 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 //list in a foward order.																				*
 //*******************************************************************************************************
 ostream& StringDLinkedList::front_print(ostream& out) const {
-	bool repeat;
+	bool repeat = true;
 	Node* tempPtr = head;
 	out << "{ ";
 
@@ -128,7 +128,7 @@ ostream& StringDLinkedList::front_print(ostream& out) const {
 //list in a backwards order.																			*
 //*******************************************************************************************************
 ostream& StringDLinkedList::back_print(ostream& out) const {
-	bool repeat;
+	bool repeat = true;
 	Node* tempPtr = tail;
 	
 	out << "{ ";
