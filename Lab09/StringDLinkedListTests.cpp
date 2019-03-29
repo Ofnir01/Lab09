@@ -1,6 +1,8 @@
 #include "catch.hpp"
 #include "exceptions.h"
 #include "StringDLinkedList.h"
+#include <sstream>
+using std::ostream;
 
 TEST_CASE("Testing StringDLinkedList class") {
 	
@@ -67,5 +69,51 @@ TEST_CASE("Testing StringDLinkedList class") {
 		//REQUIRE(test.front() == nullptr);
 
 		REQUIRE_THROWS_AS(test.pop_front(), EmptyList);
+	}
+
+	SECTION("Testing pop_back") {
+		StringDLinkedList test;
+		test.push_back("Hello");
+		test.push_back("There");
+		test.push_back("How");
+		test.push_back("Are");
+		test.push_back("You?");
+
+		test.pop_back();
+		REQUIRE(test.back() == "Are");
+
+		test.pop_back();
+		REQUIRE(test.back() == "How");
+
+		test.pop_back();
+		REQUIRE(test.back() == "There");
+
+		test.pop_back();
+		REQUIRE(test.back() == "Hello");
+
+		test.pop_back();
+		//Ask how to test this particular case.
+
+		REQUIRE_THROWS_AS(test.pop_back(), EmptyList);
+	}
+
+	SECTION("Testing remove_inst") {
+		//Still pending.
+	}
+
+	SECTION("Testing front_print") {
+		//ostream out;
+		StringDLinkedList test;
+		test.push_back("Hello");
+		test.push_back("There");
+		test.push_back("How");
+		test.push_back("Are");
+		test.push_back("You?");
+
+
+	}
+
+	SECTION("Testing back_print") {
+
 	}
 }
