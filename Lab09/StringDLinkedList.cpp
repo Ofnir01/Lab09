@@ -24,7 +24,7 @@ const string& StringDLinkedList::back() const {
 //push_front function. This function will add a new value to the beginning of the list.					*
 //*******************************************************************************************************
 void StringDLinkedList::push_front(const string& data_in) {
-	if (head == nullptr) {
+	if (head->next == nullptr) {
 		head->data = data_in;
 	}
 	else {
@@ -36,8 +36,6 @@ void StringDLinkedList::push_front(const string& data_in) {
 		tempPtr->next = head;
 		
 		head = tempPtr;
-
-		//delete tempPtr;
 	}
 }
 
@@ -57,8 +55,6 @@ void StringDLinkedList::push_back(const string& data_in) {
 		tempPtr->prev = tail;
 
 		tail = tempPtr;
-
-		//delete tempPtr;
 	}
 }
 
@@ -105,7 +101,22 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 //list in a foward order.																				*
 //*******************************************************************************************************
 ostream& StringDLinkedList::front_print(ostream& out) const {
+	bool repeat;
+	Node* tempPtr = head;
 	out << "{ ";
+
+	while (repeat) {
+		if (head == tail) {
+			out << "List is empty. ";
+			repeat = false;
+		}
+
+		else if (tempPtr != nullptr) {
+			out << tempPtr->data << " ";
+			tempPtr = tempPtr->next;
+			repeat = true;
+		}
+	}
 
 	out << "}";
 	
@@ -117,6 +128,26 @@ ostream& StringDLinkedList::front_print(ostream& out) const {
 //list in a backwards order.																			*
 //*******************************************************************************************************
 ostream& StringDLinkedList::back_print(ostream& out) const {
+	bool repeat;
+	Node* tempPtr = tail;
+	
+	out << "{ ";
+
+	while (repeat) {
+		if (head == tail) {
+			out << "List is empty. ";
+			repeat = false;
+		}
+
+		else if (tempPtr != nullptr) {
+			out << tempPtr->data << " ";
+			tempPtr = tempPtr->prev;
+			repeat = true;
+		}
+	}
+
+	out << "}";
+
 	return out;
 }
 
