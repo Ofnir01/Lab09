@@ -13,14 +13,20 @@ StringDLinkedList::StringDLinkedList() {
 //front function. This function will return a constant reference to the first value in the list.		*
 //*******************************************************************************************************
 const string& StringDLinkedList::front() const {
-	return head->data;
+	if (head == nullptr && tail == nullptr)
+		throw EmptyList("No value to show. The list is empty.");
+	else
+		return head->data;
 }
 
 //*******************************************************************************************************
 //back function. This function will return a constant reference to the last value in the list.			*
 //*******************************************************************************************************
 const string& StringDLinkedList::back() const {
-	return tail->data;
+	if (head == nullptr && tail == nullptr)
+		throw EmptyList("No value to show. The list is empty.");
+	else
+		return tail->data;
 }
 
 //*******************************************************************************************************
@@ -161,21 +167,15 @@ void StringDLinkedList::remove_inst(const string& data_in) {
 //list in a foward order.																				*
 //*******************************************************************************************************
 ostream& StringDLinkedList::front_print(ostream& out) const {
-	bool repeat = true;
 	Node* tempPtr = head;
 	out << "{ ";
 
-	while (repeat) {
-		if (head == nullptr && tail == nullptr) {
-			out << "List is empty. ";
-			repeat = false;
-		}
-
-		else if (tempPtr != nullptr) {
+	if (head == nullptr && tail == nullptr) {
+		out << "List is empty. ";
+	}
+	while (tempPtr != nullptr) {
 			out << tempPtr->data << " ";
 			tempPtr = tempPtr->next;
-			repeat = true;
-		}
 	}
 
 	out << "}";
@@ -188,21 +188,18 @@ ostream& StringDLinkedList::front_print(ostream& out) const {
 //list in a backwards order.																			*
 //*******************************************************************************************************
 ostream& StringDLinkedList::back_print(ostream& out) const {
-	//bool repeat = true;
 	Node* tempPtr = tail;
 	
 	out << "{ ";
 
 	if (head == nullptr && tail == nullptr) {
 		out << "List is empty. ";
-		//repeat = false;
 	}
 
 	while (tempPtr != nullptr)// && repeat) {
 	{
 		out << tempPtr->data << " ";
 		tempPtr = tempPtr->prev;
-		//repeat = true;
 	}
 
 	out << "}";

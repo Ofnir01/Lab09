@@ -69,7 +69,7 @@ TEST_CASE("Testing StringDLinkedList class") {
 
 		test.pop_front();
 		REQUIRE_THROWS_AS(test.front(), EmptyList);
-
+		
 		REQUIRE_THROWS_AS(test.pop_front(), EmptyList);
 	}
 
@@ -93,9 +93,10 @@ TEST_CASE("Testing StringDLinkedList class") {
 		test.pop_back();
 		REQUIRE(test.back() == "Hello");
 
+		
 		test.pop_back();
-		//Ask how to test this particular case.
-
+		REQUIRE_THROWS_AS(test.back(), EmptyList);
+		
 		REQUIRE_THROWS_AS(test.pop_back(), EmptyList);
 	}
 
@@ -113,20 +114,20 @@ TEST_CASE("Testing StringDLinkedList class") {
 		test.push_back("You?");
 
 		test.front_print(out);
-		REQUIRE(out.str() == " --- ");
+		REQUIRE(out.str() == "{ Hello There How Are You? }");
 	}
 
 	SECTION("Testing back_print") {
 		ostringstream out;
 		StringDLinkedList test;
-		test.push_back("Hello");
-		test.push_back("There");
-		test.push_back("How");
-		test.push_back("Are");
-		test.push_back("You?");
+		test.push_front("Hello");
+		test.push_front("There");
+		test.push_front("How");
+		test.push_front("Are");
+		test.push_front("You?");
 
 		test.back_print(out);
 
-		REQUIRE(" " == " ");
+		REQUIRE(out.str() == "{ Hello There How Are You? }");
 	}
 }
