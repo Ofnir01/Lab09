@@ -77,7 +77,7 @@ void StringDLinkedList::push_back(const string& data_in) {
 void StringDLinkedList::pop_front() {
 	//case if the list is empty.
 	if (head == nullptr && tail == nullptr) {
-		cout << "The list is empty, there is no value to delete.";
+		throw EmptyList("The list is empty. There are no values to delete.");
 	}
 
 	//case if the list has only one node.
@@ -103,7 +103,7 @@ void StringDLinkedList::pop_front() {
 void StringDLinkedList::pop_back() {
 	//case if the list is empty.
 	if (head == nullptr && tail == nullptr) {
-		cout << "The list is empty, there is no value to delete.";
+		throw EmptyList("The list is empty. There are no values to delete.");
 	}
 	
 	//case if the list has only one node.
@@ -157,7 +157,7 @@ ostream& StringDLinkedList::front_print(ostream& out) const {
 	out << "{ ";
 
 	while (repeat) {
-		if (head == tail) {
+		if (head == nullptr && tail == nullptr) {
 			out << "List is empty. ";
 			repeat = false;
 		}
