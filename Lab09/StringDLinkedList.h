@@ -1,9 +1,21 @@
 #ifndef STRINGD_H_
 #define STRINGD_H_
 #include <sstream>
+#include <string>
+using std::string;
 using std::ostream;
 class StringDLinkedList
 {
+private:
+	struct Node {
+		string data;
+		struct Node* next;
+		struct Node* prev;
+	};
+
+	Node* head;
+	Node* tail;
+
 public:
 	//Default constructor.
 	StringDLinkedList();
@@ -11,12 +23,12 @@ public:
 	//*******************************************************************************************************
 	//front function. This function will return a constant reference to the first value in the list.		*
 	//*******************************************************************************************************
-	const StringDLinkedList& front() const;
+	const string& front() const;
 
 	//*******************************************************************************************************
 	//back function. This function will return a constant reference to the last value in the list.			*
 	//*******************************************************************************************************
-	const StringDLinkedList& back() const;
+	const string& back() const;
 
 	//*******************************************************************************************************
 	//push_front function. This function will add a new value to the beginning of the list.					*
