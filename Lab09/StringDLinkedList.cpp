@@ -209,5 +209,7 @@ ostream& StringDLinkedList::back_print(ostream& out) const {
 
 //Default deconstructor.
 StringDLinkedList::~StringDLinkedList() {
-	
+	while (head != nullptr) {
+		pop_front();
+	}
 }

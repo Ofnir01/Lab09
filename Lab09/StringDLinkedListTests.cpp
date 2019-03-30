@@ -101,7 +101,12 @@ TEST_CASE("Testing StringDLinkedList class") {
 	}
 
 	SECTION("Testing remove_inst") {
-		//Still pending.
+		StringDLinkedList test;
+		test.push_back("Hello");
+		test.push_back("There");
+		test.push_back("How");
+		test.push_back("Are");
+		test.push_back("You?");
 	}
 
 	SECTION("Testing front_print") {
