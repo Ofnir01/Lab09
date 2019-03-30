@@ -101,12 +101,36 @@ TEST_CASE("Testing StringDLinkedList class") {
 	}
 
 	SECTION("Testing remove_inst") {
+		ostringstream out;
 		StringDLinkedList test;
-		test.push_back("Hello");
-		test.push_back("There");
-		test.push_back("How");
-		test.push_back("Are");
-		test.push_back("You?");
+		test.push_back("e");
+		test.push_back("x");
+		test.push_back("b");
+		test.push_back("c");
+		test.push_back("d");
+		test.push_back("e");
+		test.push_back("e");
+		test.push_back("e");
+		test.push_back("e");
+		test.push_back("y");
+		test.push_back("e");
+		test.push_back("e");
+		test.push_back("e");
+		test.push_back("a");
+		test.push_back("a");
+		test.push_back("a");
+		test.push_back("a");
+		test.push_back("a");
+		test.push_back("z");
+
+		test.remove_inst("e");
+		test.remove_inst("a");
+		test.remove_inst("b");
+		test.remove_inst("c");
+		test.remove_inst("d");
+
+		test.front_print(out);
+		REQUIRE(out.str() == "{ x y z }");
 	}
 
 	SECTION("Testing front_print") {
